@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'employee',
-        'passwords' => 'employees',
+        'guard' => 'web',
+        'passwords' => 'users',
     ],
     
 
@@ -106,7 +106,7 @@ return [
             'throttle' => 60,
         ],
         'employees' => [
-            'provider' => 'users',
+            'provider' => 'employees',
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,

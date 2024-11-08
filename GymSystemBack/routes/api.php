@@ -20,3 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/login',[AuthController::class,'AuthFuncionario']);
+
+Route::post('/test',function(){
+    return "boa man chegou aq";
+})->middleware('auth:employee');
