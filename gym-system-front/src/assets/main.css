@@ -1,0 +1,11 @@
+@import './bootstrap.css';
+
+#app {
+  /* max-width: 1280px; */
+  margin: 0 auto;
+  padding-left: 8vw;
+  padding-right: 8vw;
+  padding-top: 1rem;
+  font-weight: normal;
+}
+
