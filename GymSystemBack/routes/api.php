@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ShowAllClients;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,8 +21,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/login',[AuthController::class,'AuthFuncionario']);
 
-Route::post('/test',function(){
+Route::post('/login',[AuthController::class,'AuthFuncionario']);
+Route::middleware('auth:sanctum')->post('/test',function(){
     return "boa man chegou aq";
-})->middleware('auth:employee');
+});
+
+Route::middleware('auth:sanctum')->get('list_users',[ShowAllClients::class,'ListAllClients']);
+
+
+
+
