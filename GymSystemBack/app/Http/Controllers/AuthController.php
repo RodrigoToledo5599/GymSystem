@@ -17,9 +17,8 @@ class AuthController extends Controller
         if (Auth::guard($guard)->attempt($credentials)) {
             $user = Auth::guard($guard)->user();
             $token = $user->createToken('AppToken')->plainTextToken;
-            return $token;
-        } else {
-            return "not nice";
+            return response(["token" => $token],201);
         }
+        return response("DENIED", 403);
     }
 }
