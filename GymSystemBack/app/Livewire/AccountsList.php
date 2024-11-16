@@ -12,7 +12,7 @@ class AccountsList extends Component
     public function queryUsers(){
         sleep(2);
         $this->users = User::all();
-        return $this->users;
+        // return $this->users;
     }
 
     public function JustReturnUsers(){
@@ -22,7 +22,6 @@ class AccountsList extends Component
     public function render()
     {
         $this->queryUsers();
-        sleep(2);
         return view('livewire.accounts-list',[
             'users' => $this->users 
         ]);

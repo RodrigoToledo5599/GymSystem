@@ -20,4 +20,8 @@ class ClientController extends Controller
         
         return $user;
     }
+
+    public function ClientsViewPage(){
+        return view('users-view');
+    }
 }

@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Livewire\AccountsList;
+
+use App\Http\Controllers\ClientController;
 use App\Livewire\Login;
 
 
@@ -16,4 +17,4 @@ Route::get('/test', function (){
     return view('livewire.counter');
 });
 
-Route::get('/list',[AccountsList::class, 'render']);
+Route::get('/list',[ClientController::class, 'ClientsViewPage']);
