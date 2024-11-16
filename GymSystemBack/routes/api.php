@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ShowAllClients;
+use App\Http\Controllers\ClientController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::post('/login',[AuthController::class,'AuthFuncionario']);
+Route::post('/create_account',[ClientController::class,'CreateAccount']);
 Route::middleware('auth:sanctum')->post('/test',function(){
     return "boa man chegou aq";
 });

@@ -22,6 +22,7 @@ class AccountsList extends Component
     public function render()
     {
         $this->queryUsers();
+        sleep(2);
         return view('livewire.accounts-list',[
             'users' => $this->users 
         ]);

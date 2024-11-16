@@ -5,6 +5,7 @@ namespace App\Listeners;
 use App\Events\UserLogged;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Redis;
 
 class NotifyUserLogged
 {
@@ -19,8 +20,8 @@ class NotifyUserLogged
     /**
      * Handle the event.
      */
-    public function handle(UserLogged $event): void
+    public function handle(UserLogged $event):void
     {
-        print('GGGGGGGGGGGGGGGG');
+        Redis::set('user:1','whatever');
     }
 }

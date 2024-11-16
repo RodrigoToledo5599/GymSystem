@@ -2,11 +2,11 @@
 
 namespace App\Listeners;
 
-use App\Events\UserCreation;
+use App\Events\ClientSignIn;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
-class NotifyUserCreation
+class NotifyClientSignIn
 {
     /**
      * Create the event listener.
@@ -19,8 +19,8 @@ class NotifyUserCreation
     /**
      * Handle the event.
      */
-    public function handle(UserCreation $event): void
+    public function handle(ClientSignIn $event): void
     {
-        //
+        return $event->user;
     }
 }
