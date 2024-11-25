@@ -1,13 +1,10 @@
 
 <div>
-
-    {{-- <button wire:click="queryUsers">djdjdjdjd</button> --}}
-    <div wire:poll="queryUsers">
+    <div wire:poll>
         @foreach($users as $user)
-            <livewire:account-component :_user="$user"/>
+            {{$user->name}} <br>
         @endforeach
     </div>    
-
 </div>
 
 

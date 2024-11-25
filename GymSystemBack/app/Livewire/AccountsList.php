@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\User;
+use Illuminate\Support\Carbon;
 
 class AccountsList extends Component
 {   
@@ -12,7 +13,7 @@ class AccountsList extends Component
     public function queryUsers(){
         sleep(2);
         $this->users = User::all();
-        // return $this->users;
+        return $this->users;
     }
 
     public function JustReturnUsers(){
@@ -23,7 +24,8 @@ class AccountsList extends Component
     {
         $this->queryUsers();
         return view('livewire.accounts-list',[
-            'users' => $this->users 
+            // 'users' => $this->users
+            'date' => Carbon::now()
         ]);
     }
 }
