@@ -1,33 +1,31 @@
 <div>
     <link href="{{asset('bootstrapDist/css/bootstrap.css')}}" rel="stylesheet">
+    <livewire:header />
 
-    <livewire:header>
     <div class="whole-table-space">
         <table class="table table-striped">
             <thead class="thead thead-dark">
                 <tr>
-                    <th scope="col">NAME</th>
-                    <th scope="col">CPF</th>
-                    <th scope="col">PAID</th>
+                    <th scope="col">USER ID</th>
+                    <th scope="col">DIA</th>
+                    <th scope="col">HORÁRIO</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($users as $user)
+                @foreach($allAccess as $access)
                 <tr>
-                    <td> {{$user->name}} </td>
-                    <td> 
-                        {{substr($user->cpf, 0, 3) . '.' . substr($user->cpf, 3, 3) . '.' . substr($user->cpf, 6, 3) . '-' . substr($user->cpf, 9, 2)}}
-                    </td>
-                    <td> {{$user->paid == "1" ? "Sim" : "Não"}} </td>
+                    <td> {{$access->user_id}} </td>
+                    <td> {{$access->dia}} </td>
+                    <td> {{$access->horario}} </td>
                 </tr>
                 @endforeach
-            </tbody>
+            </tbody>   
         </table>
+        <br>
         <div class="paginacao">
-            {{$users->links()}}
+            {{$allAccess->links()}}
         </div>
     </div>
-
 
     <style>
         .whole-table-space{
@@ -42,6 +40,10 @@
         .whole-table-space .table{
             width:50%;
         }
+        .whole-table-space .paginacao{
+            
+        }
+
     </style>
     <script src="{{asset('bootstrapDist/js/bootstrap.js')}}"></script>
 </div>

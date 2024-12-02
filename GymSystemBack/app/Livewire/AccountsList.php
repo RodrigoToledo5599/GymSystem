@@ -5,27 +5,21 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\User;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class AccountsList extends Component
 {   
     public $users = [];
 
-    public function queryUsers(){
-        sleep(2);
-        $this->users = User::all();
-        return $this->users;
-    }
-
-    public function JustReturnUsers(){
-        return $this->users;
+    public function queryusers() : void {
+        $this->users= DB::table('users')->paginate(10);
     }
 
     public function render()
     {
-        $this->queryUsers();
+        $this->queryusers();
         return view('livewire.accounts-list',[
-            // 'users' => $this->users
-            'date' => Carbon::now()
+            'users' => $this->users,
         ]);
     }
 }
