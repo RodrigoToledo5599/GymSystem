@@ -7,7 +7,7 @@
       </div>
 
       <div class="options">
-        <a class="nav-link" href="/users">Usuários <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/users">Usuários </a>
         <a class="nav-link" href="/entrance">Acessos</a>
       </div>
     </div>
