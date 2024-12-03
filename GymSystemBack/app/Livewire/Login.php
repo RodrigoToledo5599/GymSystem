@@ -18,7 +18,7 @@ class Login extends Component
         $autenticado = $this->auth->AuthFuncionario($request);
         switch ($autenticado->status()){
             case 201:
-                return route('/users');
+                return redirect('users');
             case 403:
                 return view('livewire.login',[
                     'message' => 'senha e/ou email errados.'

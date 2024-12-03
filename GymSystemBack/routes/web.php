@@ -14,5 +14,8 @@ Route::get('/welcome', function () {
 });
 
 Route::get('/',[Login::class,'render']);
-Route::get('/users',[AccountsList::class,'render']);
+Route::post('/login-user',[Login::class,'authUser']);
+
+
+Route::get('/users',[AccountsList::class,'render'])->name('users');
 Route::get('/entrance',[EntranceControll::class,'render']);
