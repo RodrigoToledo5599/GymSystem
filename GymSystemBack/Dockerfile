@@ -38,12 +38,15 @@ WORKDIR /var/www/html
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Install project dependencies
+RUN composer require livewire/livewire
+CMD ["php", "artisan", "livewire:publish", "--config"]
+
 RUN composer install
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
-EXPOSE 8000
-CMD ["php", "artisan", "serve", "--host=0.0.0.0"]
+# EXPOSE 8000
+# CMD ["php", "artisan", "serve", "--host=0.0.0.0"]
 
 

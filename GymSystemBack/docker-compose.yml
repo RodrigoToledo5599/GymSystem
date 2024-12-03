@@ -1,3 +1,7 @@
+networks:
+  gymsystem:
+    
+
 services:
   app:
     container_name: GymSystemBackApp
@@ -8,24 +12,26 @@ services:
       - "./app:/var/html/www"
     depends_on:
       - db
-    # networks:
-    #   - internal
+    networks:
+      - gymsystem
 
   db:
     container_name: GymSystemDB
     image: mysql:8.0
+    # image: mysql:latest
     environment:
-      MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: GymSystemBack
       MYSQL_ROOT_USER: root
-      MYSQL_ROOT_HOST: localhost
+      MYSQL_PASSWORD: password
+      # MYSQL_ROOT_PASSWORD: password
+      # MYSQL_ROOT_HOST: localhost
     volumes:
       - mysql_data:/var/lib/mysql
     ports:
       - 3306:3306
     # restart: unless-stopped
-    # networks:
-    #   - internal
+    networks:
+      - gymsystem
 
 volumes:
   mysql_data:

@@ -16,6 +16,3 @@ Route::get('/welcome', function () {
 Route::get('/',[Login::class,'render']);
 Route::get('/users',[AccountsList::class,'render']);
 Route::get('/entrance',[EntranceControll::class,'render']);
-
-
-Route::get('/list',[ClientController::class, 'ClientsViewPage']);

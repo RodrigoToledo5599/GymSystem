@@ -30,8 +30,6 @@ Route::middleware('auth:sanctum')->post('/test',function(){
     return "boa man chegou aq";
 });
 
-Route::middleware('auth:sanctum')->get('list_users',[ShowAllClients::class,'ListAllClients']);
-
 
 
 
