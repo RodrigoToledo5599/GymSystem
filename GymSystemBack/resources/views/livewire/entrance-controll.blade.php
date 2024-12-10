@@ -2,7 +2,23 @@
     <link href="{{asset('bootstrapDist/css/bootstrap.css')}}" rel="stylesheet">
     <livewire:header />
 
-    <div class="whole-table-space">
+    <div class="whole-space">
+        <div class="input-options">
+            <div class="input-option">
+                <label for="selectday">Select the day:</label><br>
+                <input type="date" id="selectday" name="selectday">
+            </div>
+            <div class="input-option">
+                <label for="selectintervalstart">Select the interval:</label>
+                <br>
+                <input type="date" id="selectintervalstart" name="selectintervalstart">
+                <input type="date" id="selectintervalend" name="selectintervalend">
+            </div>
+            <div class="input-option">
+                <button class="btn btn-primary" wire:click="queryFromToday">Today</button>
+                <button class="btn btn-primary" wire:click="queryAll"> &nbsp;&nbsp;&nbsp;All&nbsp;&nbsp; </button>
+            </div>
+        </div>
         <table class="table table-striped">
             <thead class="thead thead-dark">
                 <tr>
@@ -28,8 +44,8 @@
     </div>
 
     <style>
-        .whole-table-space{
-            padding-top:5rem;
+        .whole-space{
+            padding-top:1rem;
             width:100%;
             overflow-x:auto;
             display:flex;
@@ -37,10 +53,27 @@
             align-items: center;
             justify-content: center;
         }
-        .whole-table-space .table{
+        .whole-space .input-options{
+            width:80vw;
+            height:18vh;
+            display:flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            border:solid 1px black;
+            margin-bottom: 1rem;
+        }
+        .whole-space .input-options .input-option{
+            height:100%;
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }   
+        .whole-space .table{
             width:50%;
         }
-        .whole-table-space .paginacao{
+        .whole-space .paginacao{
             
         }
 

@@ -22,8 +22,8 @@ services:
     environment:
       MYSQL_DATABASE: GymSystemBack
       MYSQL_ROOT_USER: root
-      MYSQL_PASSWORD: password
-      # MYSQL_ROOT_PASSWORD: password
+      # MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
       # MYSQL_ROOT_HOST: localhost
     volumes:
       - mysql_data:/var/lib/mysql

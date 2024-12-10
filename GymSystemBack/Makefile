@@ -1,9 +1,10 @@
 build:
-	# docker-compose build --no-cache --force-rm
-	docker build .
+	docker-compose build --no-cache --force-rm
+	# docker build .
 
 up:
-	docker-compose up -d
+	docker-compose up app -d
+	docker-compose up db -d
 
 dependencies:	
 	docker exec GymSystemBackApp composer update

@@ -21,7 +21,7 @@ class Login extends Component
                 return redirect('users');
             case 403:
                 return view('livewire.login',[
-                    'message' => 'senha e/ou email errados.'
+                    'message' => 'Senha e/ou email errados.'
                 ]);
         }
     }
