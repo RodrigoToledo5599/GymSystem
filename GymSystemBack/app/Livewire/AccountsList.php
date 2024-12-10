@@ -12,7 +12,7 @@ class AccountsList extends Component
     public $users = [];
 
     public function queryusers() : void {
-        $this->users= DB::table('users')->paginate(10);
+        $this->users= DB::table('users')->paginate(5);
     }
 
     public function render()

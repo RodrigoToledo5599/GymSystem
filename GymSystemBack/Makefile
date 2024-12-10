@@ -22,6 +22,11 @@ database-seed:
 # serve:
 # 	docker exec -it GymSystemBackApp php artisan serve --host=127.0.0.1
 
+rebuild-app:
+	docker-compose app down
+	docker-compose build app
+	docker-compose up app -d
+
 
 do-it-all: # build it all and run it all at once with only this command
 	@make build

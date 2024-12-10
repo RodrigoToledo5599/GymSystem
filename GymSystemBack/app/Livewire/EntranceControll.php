@@ -15,25 +15,23 @@ class EntranceControll extends Component
     public $option = 0; // option = 1 queryAll / option = 2 queryToday
     
     public function queryAll() : void{
-        $this->allAccess = Access::all();
-        $this->render();
+        $this->allAccess = DB::table('access_controll')->paginate(10);
     }
 
     public function queryFromToday() : void{
         $this->allAccess = DB::table('access_controll')->where('dia',Carbon::now()->format('Y-m-d'))->paginate(10);
-        $this->render();
+    
     }
 
     public function queryInterval(Request $request) : void{
-        $this->allAccess = DB::table('access_controll')->whereBetween('dia',[$request['selectintervalstart'],$request['selectintervalend']])->get();
-        $this->render();
+        $this->allAccess = DB::table('access_controll')->whereBetween('dia',[$request['selectintervalstart'],$request['selectintervalend']])->paginate(10);
     }
 
 
 
 
     public function render(){
-        $this->queryFromToday();
+        $this->queryAll();
         return view('livewire.entrance-controll',[
             'allAccess' => $this->allAccess,
         ]);
