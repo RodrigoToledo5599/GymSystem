@@ -42,6 +42,7 @@ RUN composer require livewire/livewire
 # CMD ["php", "artisan", "livewire:publish", "--config"]
 RUN php artisan livewire:publish --config
 RUN composer install
+# RUN php artisan key:generate
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache

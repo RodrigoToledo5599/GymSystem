@@ -17,6 +17,7 @@ database-create:
 database-seed:
 	docker exec GymSystemBackApp php artisan migrate
 	docker exec GymSystemBackApp php artisan db:seed
+	docker exec GymSystemBackApp php artisan db:seed --class=AccessSeeder
 
 # serve:
 # 	docker exec -it GymSystemBackApp php artisan serve --host=127.0.0.1

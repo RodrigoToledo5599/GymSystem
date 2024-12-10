@@ -21,6 +21,7 @@ services:
     # image: mysql:latest
     environment:
       MYSQL_DATABASE: GymSystemBack
+      # MYSQL_USER: root
       MYSQL_ROOT_USER: root
       # MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: password
