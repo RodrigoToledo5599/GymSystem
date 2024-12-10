@@ -41,6 +41,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN composer require livewire/livewire
 # CMD ["php", "artisan", "livewire:publish", "--config"]
 RUN php artisan livewire:publish --config
+RUN composer require predis/predis
 RUN composer install
 # RUN php artisan key:generate
 

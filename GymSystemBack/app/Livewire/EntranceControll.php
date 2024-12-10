@@ -20,7 +20,6 @@ class EntranceControll extends Component
 
     public function queryFromToday() : void{
         $this->allAccess = DB::table('access_controll')->where('dia',Carbon::now()->format('Y-m-d'))->paginate(10);
-    
     }
 
     public function queryInterval(Request $request) : void{
