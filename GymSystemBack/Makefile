@@ -10,11 +10,11 @@ dependencies:
 	docker exec GymSystemBackApp composer update
 	docker exec GymSystemBackApp composer install
 
-database-create:
+db-create:
 	docker-compose exec db sh -c "mysql -u root -p -e 'DROP DATABASE IF EXISTS GymSystemBack;'"
 	docker-compose exec db sh -c "mysql -u root -p -e 'CREATE DATABASE GymSystemBack;'"
 
-database-seed:
+db-seed:
 	docker exec GymSystemBackApp php artisan migrate
 	docker exec GymSystemBackApp php artisan db:seed
 	docker exec GymSystemBackApp php artisan db:seed --class=AccessSeeder
@@ -32,8 +32,8 @@ do-it-all: # build it all and run it all at once with only this command
 	@make build
 	@make up 
 	@make dependencies
-	@make database-create
-	@make database-seed
+	@make db-create
+	@make db-seed
 
 
 
