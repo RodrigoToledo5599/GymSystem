@@ -1,3 +1,11 @@
+# FROM node:20-alpine3.20 AS builder
+
+# WORKDIR /app
+# COPY package*.json ./
+# RUN npm install
+# RUN npm install --save-dev laravel-echo pusher-js
+
+
 FROM php:8.2-apache
 
 # Enable mod_rewrite
@@ -15,7 +23,7 @@ RUN apt-get update && \
     libjpeg-dev \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
-    libpng-dev 
+    libpng-dev \
 
 
 # Install PHP extensions
@@ -39,14 +47,18 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Install project dependencies
 RUN composer require livewire/livewire
-# CMD ["php", "artisan", "livewire:publish", "--config"]
 RUN php artisan livewire:publish --config
-RUN composer require predis/predis
+RUN composer require laravel/reverb
+RUN php artisan reverb:install
+RUN composer require pusher/pusher-php-server
+
 RUN composer install
 # RUN php artisan key:generate
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+
+# COPY --from=builder /app/public/build /var/www/html/public/build 
 
 EXPOSE 8000
 CMD ["php", "artisan", "serve", "--host=0.0.0.0"]
