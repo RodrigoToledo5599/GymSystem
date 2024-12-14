@@ -16,14 +16,14 @@ dependencies:
 db-create:
 	docker-compose exec db sh -c "mysql -u root -p -e 'DROP DATABASE IF EXISTS GymSystemBack;'"
 	docker-compose exec db sh -c "mysql -u root -p -e 'CREATE DATABASE GymSystemBack;'"
+	docker exec GymSystemBackApp php artisan migrate
 
 db-seed:
-	docker exec GymSystemBackApp php artisan migrate
 	docker exec GymSystemBackApp php artisan db:seed
 	docker exec GymSystemBackApp php artisan db:seed --class=AccessSeeder
 
-rebuild-app:
-	docker-compose app down
+refresh-app:
+	docker-compose down app 
 	docker-compose build app
 	docker-compose up app -d
 
@@ -44,6 +44,10 @@ do-it-all: # build it all and run it all at once with only this command
 
 see-all-dbs:
 	docker-compose exec db sh -c "mysql -u root -p -e 'SHOW DATABASES;'"
+
+table-access_controll:
+	docker-compose exec db sh -c "mysql -u root -p -e 'SELECT * FROM GymSystemBack.access_controll;'"
+
 
 
 # remove-all:

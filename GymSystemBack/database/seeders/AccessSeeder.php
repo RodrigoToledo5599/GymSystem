@@ -63,6 +63,54 @@ class AccessSeeder extends Seeder
                 'horario' => '12:15:00',
             ],
         ]);
+        $date5 = Carbon::now()->subDays(1);
+        DB::table('access_controll')->insert([
+            [
+                'user_id' => 1,
+                'dia' => $date5->format('Y-m-d'),
+                'horario' => '10:00:00',
+            ],
+            [
+                'user_id' => 2,
+                'dia' => $date5->format('Y-m-d'),
+                'horario' => '13:30:00',
+            ],
+            [
+                'user_id' => 3,
+                'dia' => $date5->format('Y-m-d'),
+                'horario' => '15:45:00',
+            ],
+            [
+                'user_id' => 4,
+                'dia' => $date5->format('Y-m-d'),
+                'horario' => '09:15:00',
+            ],
+            [
+                'user_id' => 5,
+                'dia' => $date5->format('Y-m-d'),
+                'horario' => '11:30:00',
+            ],
+            [
+                'user_id' => 4,
+                'dia' => $date5->format('Y-m-d'),
+                'horario' => '14:00:00',
+            ],
+            [
+                'user_id' => 3,
+                'dia' => $date5->format('Y-m-d'),
+                'horario' => '16:15:00',
+            ],
+            [
+                'user_id' => 1,
+                'dia' => $date5->format('Y-m-d'),
+                'horario' => '08:45:00',
+            ],
+            [
+                'user_id' => 4,
+                'dia' => $date5->format('Y-m-d'),
+                'horario' => '12:15:00',
+            ],
+        ]);
         $date2 = Carbon::now()->subDays(3);
         DB::table('access_controll')->insert([
             [

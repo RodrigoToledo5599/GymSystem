@@ -5,38 +5,51 @@
     <div class="whole-space">
         <div class="input-options">
             <div class="input-option">
-                <label for="selectday">Select the day:</label><br>
-                <input type="date" id="selectday" name="selectday">
+                <form action="entranceday" method="GET">
+                    <label for="selectday">Select the day:</label>
+                    <br>
+                    <input type="date" id="selectday" name="selectday">
+                    <br>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
             </div>
             <div class="input-option">
-                <label for="selectintervalstart">Select the interval:</label>
-                <br>
-                <input type="date" id="selectintervalstart" name="selectintervalstart">
-                <input type="date" id="selectintervalend" name="selectintervalend">
+                <form action="entranceinterval" method="GET">
+                    <label for="selectintervalstart">Select the interval:</label>
+                    <br>
+                    <input type="date" id="selectintervalstart" name="selectintervalstart">
+                    <input type="date" id="selectintervalend" name="selectintervalend">
+                    <br>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
             </div>
             <div class="input-option">
                 <button class="btn btn-primary" wire:click="queryFromToday">Today</button>
                 <button class="btn btn-primary" wire:click="queryAll"> &nbsp;&nbsp;&nbsp;All&nbsp;&nbsp; </button>
             </div>
         </div>
-        <table class="table table-striped">
-            <thead class="thead thead-dark">
-                <tr>
-                    <th scope="col">USER ID</th>
-                    <th scope="col">DIA</th>
-                    <th scope="col">HORÁRIO</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($allAccess as $access)
-                <tr>
-                    <td> {{$access->user_id}} </td>
-                    <td> {{$access->dia}} </td>
-                    <td> {{$access->horario}} </td>
-                </tr>
-                @endforeach
-            </tbody>   
-        </table>
+        @if(!empty($allAccess))
+            <table class="table table-striped">
+                <thead class="thead thead-dark">
+                    <tr>
+                        <th scope="col">USER ID</th>
+                        <th scope="col">DIA</th>
+                        <th scope="col">HORÁRIO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($allAccess as $access)
+                    <tr>
+                        <td> {{$access->user_id}} </td>
+                        <td> {{$access->dia}} </td>
+                        <td> {{$access->horario}} </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @else
+            <p>nenhum registro de entrada ainda</p>
+        @endif
         <br>
         <div class="paginacao">
             {{$allAccess->links()}}
@@ -55,7 +68,9 @@
         }
         .whole-space .input-options{
             width:80vw;
+            max-width:1919px;
             height:18vh;
+            max-height:250px;
             display:flex;
             flex-direction: row;
             align-items: center;

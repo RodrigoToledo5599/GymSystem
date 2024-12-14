@@ -18,8 +18,8 @@ class EntranceControll extends Component
         $this->allAccess = DB::table('access_controll')->paginate(10);
     }
 
-    public function queryFromToday() : void{
-        $this->allAccess = DB::table('access_controll')->where('dia',Carbon::now()->format('Y-m-d'))->paginate(10);
+    public function queryFromASpecificDay(Request $request) : void{
+        $this->allAccess = DB::table('access_controll')->where('dia',$request['selectday'])->paginate(10);
     }
 
     public function queryInterval(Request $request) : void{
@@ -36,8 +36,15 @@ class EntranceControll extends Component
         ]);
     }
 
-    public function render2(){
-        $this->queryAll();
+    public function renderDay(Request $request){
+        $this->queryFromASpecificDay($request);
+        return view('livewire.entrance-controll',[
+            'allAccess' => $this->allAccess,
+        ]);
+    }
+
+    public function renderInterval(Request $request){
+        $this->queryAll($request);
         return view('livewire.entrance-controll',[
             'allAccess' => $this->allAccess,
         ]);
